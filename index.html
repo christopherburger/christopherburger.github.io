@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christopher Burger, PhD</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #222222;
+            --link: #0076d1;
+            --card-bg: #f4f4f4;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #1a1a1a;
+                --text: #eeeeee;
+                --link: #4da3ff;
+                --card-bg: #2d2d2d;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 0 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 { margin-bottom: 0.5rem; }
+        .subtitle { opacity: 0.7; font-size: 1.1rem; }
+
+        .links-container {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .link-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .link-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-color: var(--link);
+        }
+
+        .link-card h2 {
+            margin: 0 0 0.5rem 0;
+            color: var(--link);
+            font-size: 1.25rem;
+        }
+
+        .link-card p { margin: 0; font-size: 0.95rem; opacity: 0.8; }
+
+        footer {
+            margin-top: 4rem;
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Christopher Burger, PhD</h1>
+        <p class="subtitle">Professor • Computer Science & Engineering</p>
+    </header>
+
+    <main class="links-container">
+        
+        <a href="https://christopherburger.github.io/courses" class="link-card">
+            <h2>Course Content</h2>
+            <p>Access lecture notes, assignments, and resources for current and past semesters.</p>
+        </a>
+
+        <a href="https://engineering.olemiss.edu/" class="link-card">
+            <h2>Faculty Profile</h2>
+            <p>University of Mississippi academic bio, research publications, and contact info.</p>
+        </a>
+
+        <a href="#" class="link-card">
+            <h2>Business Page</h2>
+            <p>Consulting services and industry-focused projects in Cybersecurity and AI.</p>
+        </a>
+
+    </main>
+
+    <footer>
+        &copy; 2026 Christopher Burger.
+    </footer>
+
+</body>
+</html>
