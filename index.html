@@ -109,6 +109,31 @@
             font-size: 0.8rem;
             opacity: 0.5;
         }
+
+
+        /* Initials Icon Styling */
+.initials-icon {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    background-color: var(--link); /* Uses your link color as the circle color */
+    color: #ffffff; /* White text for contrast */
+    
+    border-radius: 50%; /* Makes it a circle. Use 8px for a rounded square. */
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+}
+
+/* Optional: Different color for disabled state badges */
+.disabled .initials-icon {
+    background-color: #999;
+}
     </style>
 </head>
 <body>
@@ -138,7 +163,7 @@
 
         <!-- Faculty Profile -->
         <a href="https://sites.olemiss.edu/cburger" class="link-card">
-            <img src="faculty-icon.png" alt="" class="card-icon">
+            <div class="initials-icon">UM</div>
             <div class="card-text">
                 <h2>Faculty Profile</h2>
                 <p>University of Mississippi academic bio, research publications, and contact info.</p>

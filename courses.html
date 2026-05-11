@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Resources | Christopher Burger</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #222222;
+            --link: #0076d1;
+            --card-bg: #f4f4f4;
+            --icon-size: 50px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #1a1a1a;
+                --text: #eeeeee;
+                --link: #4da3ff;
+                --card-bg: #2d2d2d;
+            }
+
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            text-decoration: none;
+            color: var(--link);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        header {
+            margin-bottom: 3rem;
+        }
+
+        h1 { margin-bottom: 0.5rem; font-size: 2rem; }
+        .subtitle { opacity: 0.7; font-size: 1.1rem; }
+
+        .courses-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .course-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid transparent;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .course-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border-color: var(--link);
+        }
+
+        .course-icon {
+            width: var(--icon-size);
+            height: var(--icon-size);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+        }
+
+        .course-info h2 {
+            margin: 0 0 0.4rem 0;
+            font-size: 1.25rem;
+            color: var(--link);
+        }
+
+        .course-info p {
+            margin: 0;
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        footer {
+            margin-top: 5rem;
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+
+        /* SVG Icon Strokes */
+        .icon-svg {
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+
+        /* Disabled Card State */
+.course-card.disabled {
+    opacity: 0.5;
+    filter: grayscale(100%);
+    pointer-events: none; /* Prevents clicking */
+    cursor: not-allowed;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+/* Optional: "Coming Soon" Badge */
+.status-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: #666;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+    </style>
+</head>
+<body>
+
+    <a href="../" class="back-link">← Back to Main Hub</a>
+
+    <header>
+        <h1>Course Resources</h1>
+        <p class="subtitle">Lecture materials, assignments, and syllabi for current and upcoming terms.</p>
+    </header>
+
+    <main class="courses-grid">
+        
+        <a href="./programming" class="course-card coming-soon disabled">
+            <div class="course-icon">
+                <svg class="icon-svg" width="40" height="40" viewBox="0 0 24 24">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+            </div>
+            <div class="course-info">
+                <span class="status-badge">Coming Soon</span>
+                <h2>Programming for Engineers and Scientists</h2>
+                <!-- <p> </p> -->
+            </div>
+        </a>
+
+        <a href="./probability" class="course-card coming-soon disabled">
+            <div class="course-icon">
+                <svg class="icon-svg" width="40" height="40" viewBox="0 0 24 24">
+                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+            </div>
+            <div class="course-info">
+                <span class="status-badge">Coming Soon</span>
+                <h2>Applied Probability</h2>
+                <!-- <p> </p> -->
+            </div>
+        </a>
+
+        <a href="./literacy" class="course-card coming-soon disabled">
+            <div class="course-icon">
+                <svg class="icon-svg" width="40" height="40" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                </div>
+            <div class="course-info">
+                <span class="status-badge">Coming Soon</span>
+                <h2>Data Literacy</h2>
+                <!-- <p> </p> -->
+            </div>
+        </a>
+
+        <a href="./cybersecurity" class="course-card coming-soon disabled">
+            <div class="course-icon">
+                <svg class="icon-svg" width="40" height="40" viewBox="0 0 24 24">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+            </div>
+            <div class="course-info">
+                <span class="status-badge">Coming Soon</span>
+                <h2>Data Analysis in Cybersecurity</h2>
+                <p> </p>
+            </div>
+        </a>
+
+    </main>
+
+    <footer>
+        &copy; 2026 Christopher Burger. All rights reserved.
+    </footer>
+
+</body>
+</html>
