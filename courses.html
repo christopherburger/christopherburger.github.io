@@ -256,6 +256,13 @@
         </div>
     </main>
 
-    <footer>&copy; 2026 Christopher Burger. All rights reserved.</footer>
+
+<footer>
+    &copy; <span id="year">2026</span> Christopher Burger. All rights reserved.
+</footer>
+
+<script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
