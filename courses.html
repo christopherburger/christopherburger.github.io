@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Course notes, exercises, and resources for courses taught or developed by Christopher Burger.">
+    <meta name="description" content="Course notes and resources for courses taught or developed by Christopher Burger.">
     <title>Course Resources | Christopher Burger</title>
     <style>
         :root {
@@ -15,6 +15,7 @@
             --card-bg: #f7f9fb;
             --border: #dce3ea;
             --hover-border: #79aee0;
+            --coming-soon-bg: #e0e0e0;
         }
 
         @media (prefers-color-scheme: dark) {
@@ -26,6 +27,7 @@
                 --card-bg: #242b33;
                 --border: #3b4551;
                 --hover-border: #83bbf2;
+                --coming-soon-bg: #383838;
             }
         }
 
@@ -145,12 +147,12 @@
 
     <header>
         <h1>Course Resources</h1>
-        <p class="subtitle">Notes, exercises, and resources for courses I teach or am developing.</p>
+        <p class="subtitle">Notes and resources for courses I teach or am developing.</p>
     </header>
 
     <main class="courses-grid" aria-label="Course resources">
         <!-- Row 1: Computing and programming -->
-        <a href="./ds-course" class="course-card">
+        <a href="./ds-course" class="course-card" style="background-color: var(--coming-soon-bg);">
             <div class="course-icon">
                 <!-- Data table with a trend line -->
                 <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -160,7 +162,7 @@
                 </svg>
             </div>
             <h2 class="course-name">Computing and Data Literacy</h2>
-            <span class="course-status">In development</span>
+            <span class="course-status">Coming soon</span>
         </a>
 
         <a href="/pfes-course" class="course-card">
@@ -175,7 +177,8 @@
             <span class="course-status">In development</span>
         </a>
 
-        <div class="course-card">
+        
+            <a href="./python-data-structures-course" class="course-card" style="background-color: var(--coming-soon-bg);">
             <div class="course-icon">
                 <!-- Binary tree -->
                 <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -187,9 +190,10 @@
             </div>
             <h2 class="course-name">Data Structures in Python</h2>
             <span class="course-status">Coming soon</span>
-        </div>
+        </a>
 
-        <div class="course-card">
+      
+            <a href="./matlab-course" class="course-card" style="background-color: var(--coming-soon-bg);">
             <div class="course-icon">
                 <!-- Plot axes with a smooth curve -->
                 <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -199,10 +203,11 @@
             </div>
             <h2 class="course-name">Programming in MATLAB</h2>
             <span class="course-status">Coming soon</span>
-        </div>
+        </a>
 
         <!-- Row 2: Mathematical foundations and applications -->
-        <div class="course-card">
+      
+            <a href="./ala-course" class="course-card" style="background-color: var(--coming-soon-bg);">
             <div class="course-icon">
                 <!-- Matrix brackets and entries -->
                 <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -215,7 +220,7 @@
             </div>
             <h2 class="course-name">Applied Linear Algebra</h2>
             <span class="course-status">Coming soon</span>
-        </div>
+        </a>
 
         <a href="./probability-course" class="course-card">
             <div class="course-icon">
@@ -230,7 +235,7 @@
             <span class="course-status">In development</span>
         </a>
 
-        <div class="course-card">
+         <a href="./risk-course" class="course-card" style="background-color: var(--coming-soon-bg);">
             <div class="course-icon">
                 <!-- Reliability / risk gauge -->
                 <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -241,9 +246,9 @@
             </div>
             <h2 class="course-name">Risk and Reliability</h2>
             <span class="course-status">Coming soon</span>
-        </div>
+        </a>
 
-        <div class="course-card">
+         <a href="./cybersecurity-data-analysis-course" class="course-card" style="background-color: var(--coming-soon-bg);">
             <div class="course-icon">
                 <!-- Security shield with analytical bars -->
                 <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -253,7 +258,7 @@
             </div>
             <h2 class="course-name">Data Analysis in Cybersecurity</h2>
             <span class="course-status">Coming soon</span>
-        </div>
+        </a>
     </main>
 
 
