@@ -3,304 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Course notes, exercises, and resources for courses taught or developed by Christopher Burger.">
     <title>Course Resources | Christopher Burger</title>
     <style>
         :root {
+            color-scheme: light dark;
             --bg: #ffffff;
-            --text: #222222;
-            --link: #0076d1;
-            --card-bg: #f4f4f4;
-            --icon-size: 50px;
+            --text: #202b38;
+            --muted: #596878;
+            --accent: #1466b1;
+            --card-bg: #f7f9fb;
+            --border: #dce3ea;
+            --hover-border: #79aee0;
         }
 
         @media (prefers-color-scheme: dark) {
             :root {
-                --bg: #1a1a1a;
-                --text: #eeeeee;
-                --link: #4da3ff;
-                --card-bg: #2d2d2d;
+                --bg: #171b20;
+                --text: #edf1f5;
+                --muted: #aab5c1;
+                --accent: #83bbf2;
+                --card-bg: #242b33;
+                --border: #3b4551;
+                --hover-border: #83bbf2;
             }
-
         }
+
+        * { box-sizing: border-box; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 900px;
+            line-height: 1.5;
+            max-width: 1160px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 36px 24px 48px;
             background: var(--bg);
             color: var(--text);
         }
 
         .back-link {
             display: inline-block;
-            margin-bottom: 2rem;
-            text-decoration: none;
-            color: var(--link);
+            margin-bottom: 1.8rem;
+            color: var(--accent);
             font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        header {
-            margin-bottom: 3rem;
-        }
-
-        h1 { margin-bottom: 0.5rem; font-size: 2rem; }
-        .subtitle { opacity: 0.7; font-size: 1.1rem; }
-
-
-.courses-grid {
-    display: grid;
-    /* This creates as many columns as fit, with a minimum width of 300px each */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-}
-
-/* Optional: If you want the 7th card to center itself when it's alone on the bottom row */
-@media (min-width: 650px) {
-    .course-card:last-child:nth-child(odd) {
-        grid-column: 1 / -1; /* Spans across both columns */
-        max-width: 500px;     /* Keeps it from becoming too wide */
-        margin: 0 auto;      /* Centers it */
-        width: 100%;
-    }
-}
-        .course-card {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 12px;
+            font-weight: 550;
             text-decoration: none;
-            color: inherit;
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: 1px solid transparent;
-            display: flex;
-            align-items: flex-start;
-            gap: 1.5rem;
         }
 
-        .course-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            border-color: var(--link);
+        .back-link:hover { text-decoration: underline; }
+
+        header { margin-bottom: 2rem; }
+        h1 { margin: 0 0 0.35rem; font-size: clamp(1.7rem, 3vw, 2rem); line-height: 1.2; }
+        .subtitle { margin: 0; color: var(--muted); font-size: 1rem; }
+
+        /* Four columns on desktop, two on tablets, one on phones. */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .course-card {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            min-width: 0;
+            min-height: 183px;
+            padding: 1.2rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--card-bg);
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        /* Make actual links discoverable, without visually hiding future courses. */
+        a.course-card { transition: border-color 140ms ease, background-color 140ms ease; }
+        a.course-card:hover { border-color: var(--hover-border); }
+        a.course-card:hover .course-name { text-decoration: underline; text-underline-offset: 3px; }
+        a.course-card:focus-visible, .back-link:focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 3px;
         }
 
         .course-icon {
-            width: var(--icon-size);
-            height: var(--icon-size);
+            width: 42px;
+            height: 42px;
             flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text);
+            color: var(--accent);
         }
 
-        .course-info h2 {
-            margin: 0 0 0.4rem 0;
-            font-size: 1.25rem;
-            color: var(--link);
-        }
-
-        .course-info p {
-            margin: 0;
-            font-size: 0.95rem;
-            opacity: 0.8;
-        }
-
-        footer {
-            margin-top: 5rem;
-            text-align: center;
-            font-size: 0.8rem;
-            opacity: 0.5;
-        }
-
-        /* SVG Icon Strokes */
         .icon-svg {
-            stroke: currentColor;
+            display: block;
+            width: 100%;
+            height: 100%;
             fill: none;
-            stroke-width: 2;
+            stroke: currentColor;
+            stroke-width: 1.7;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
 
+        .course-name {
+            margin: 0;
+            font-size: 1.075rem;
+            font-weight: 650;
+            line-height: 1.3;
+            text-wrap: pretty;
+        }
 
-        /* Disabled Card State */
-.course-card.disabled {
-    opacity: 0.5;
-    filter: grayscale(100%);
-    pointer-events: none; /* Prevents clicking */
-    cursor: not-allowed;
-    border-color: transparent !important;
-    box-shadow: none !important;
-    transform: none !important;
-}
+        .course-status {
+            display: block;
+            margin-top: auto;
+            padding-top: 0.2rem;
+            font-size: 0.78rem;
+            color: var(--muted);
+        }
 
-/* Optional: "Coming Soon" Badge */
-.status-badge {
-    display: inline-block;
-    font-size: 0.7rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    background: #666;
-    color: #fff;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 0.5rem;
-}
+        footer {
+            margin-top: 3.5rem;
+            color: var(--muted);
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .courses-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 540px) {
+            body { padding: 24px 16px 36px; }
+            .courses-grid { grid-template-columns: 1fr; }
+            .course-card { min-height: 0; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            a.course-card { transition: none; }
+        }
     </style>
 </head>
 <body>
-
     <a href="../" class="back-link">← Back to Main Hub</a>
 
     <header>
         <h1>Course Resources</h1>
-        <p class="subtitle">Lecture notes and other resources for current and prior courses. Currently under development.</p>
+        <p class="subtitle">Notes, exercises, and resources for courses I teach or am developing.</p>
     </header>
 
-    <main class="courses-grid">
+    <main class="courses-grid" aria-label="Course resources">
+        <!-- Row 1: Computing and programming -->
+        <a href="./ds-course" class="course-card">
+            <div class="course-icon">
+                <!-- Data table with a trend line -->
+                <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <path d="M3 9h18M9 3v18" />
+                    <path d="m12 17 3-4 2 2 2-4" />
+                </svg>
+            </div>
+            <h2 class="course-name">Computing and Data Literacy</h2>
+            <span class="course-status">In development</span>
+        </a>
 
-
-        
         <a href="/pfes-course" class="course-card">
             <div class="course-icon">
-                <svg class="icon-svg" width="40" height="40" viewBox="0 0 24 24">
-                    <polyline points="16 18 22 12 16 6"></polyline>
-                    <polyline points="8 6 2 12 8 18"></polyline>
+                <!-- Command-line prompt -->
+                <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <rect x="2.5" y="4" width="19" height="16" rx="2" />
+                    <path d="m7 9 4 3-4 3M13.5 16H18" />
                 </svg>
             </div>
-            <div class="course-info">
-                <span class="status-badge">In Development</span>
-                <h2>Programming in Python</h2>
-                <!-- <p> </p> -->
-            </div>
+            <h2 class="course-name">Programming in Python</h2>
+            <span class="course-status">In development</span>
         </a>
 
-        <a href="./matlab" class="course-card coming-soon disabled">
+        <div class="course-card">
             <div class="course-icon">
-                <svg class="icon-svg" width="40" height="40" viewBox="0 0 24 24">
-                    <polyline points="16 18 22 12 16 6"></polyline>
-                    <polyline points="8 6 2 12 8 18"></polyline>
+                <!-- Binary tree -->
+                <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <circle cx="12" cy="4.5" r="2.5" />
+                    <circle cx="5" cy="18.5" r="2.5" />
+                    <circle cx="19" cy="18.5" r="2.5" />
+                    <path d="m10.8 6.7-4.6 9.4M13.2 6.7l4.6 9.4" />
                 </svg>
             </div>
-            <div class="course-info">
-                <span class="status-badge">Coming Soon</span>
-                <h2>Programming in MATLAB</h2>
-                 <p> </p> 
+            <h2 class="course-name">Data Structures in Python</h2>
+            <span class="course-status">Coming soon</span>
+        </div>
+
+        <div class="course-card">
+            <div class="course-icon">
+                <!-- Plot axes with a smooth curve -->
+                <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M3 3v18h18" />
+                    <path d="M5 15c2.8 0 3.1-8 6.7-8s4.2 10 7 10c1.2 0 1.8-1 2.3-2" />
+                </svg>
             </div>
+            <h2 class="course-name">Programming in MATLAB</h2>
+            <span class="course-status">Coming soon</span>
+        </div>
+
+        <!-- Row 2: Mathematical foundations and applications -->
+        <div class="course-card">
+            <div class="course-icon">
+                <!-- Matrix brackets and entries -->
+                <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M7 3H4v18h3M17 3h3v18h-3" />
+                    <circle cx="10" cy="8" r="1" />
+                    <circle cx="15" cy="8" r="1" />
+                    <circle cx="10" cy="16" r="1" />
+                    <circle cx="15" cy="16" r="1" />
+                </svg>
+            </div>
+            <h2 class="course-name">Applied Linear Algebra</h2>
+            <span class="course-status">Coming soon</span>
+        </div>
+
+        <a href="./probability-course" class="course-card">
+            <div class="course-icon">
+                <!-- Probability density curve -->
+                <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M2 20h20" />
+                    <path d="M3 19c4.5 0 4.5-14 9-14s4.5 14 9 14" />
+                    <path d="M12 5v15" stroke-dasharray="2 2" />
+                </svg>
+            </div>
+            <h2 class="course-name">Probability, Uncertainty and Inference</h2>
+            <span class="course-status">In development</span>
         </a>
 
-                 <!-- <a href="./signals" class="course-card coming-soon disabled">
+        <div class="course-card">
             <div class="course-icon">
-                <svg class="icon-svg" width="40" height="40" viewBox="0 0 24 24">
-    <path d="M2 12h2l2-9 4 18 4-18 4 18 2-9h2"></path>
-</svg>
-            </div>
-            <div class="course-info">
-                <span class="status-badge">Coming Soon</span>
-                <h2>Signals and Information</h2>
-                <p> </p>
-            </div>
-        </a> -->
-
-
-<!-- <a href="./datastructures" class="course-card coming-soon disabled">
-    <div class="course-icon">
-        <svg class="icon-svg" width="40" height="40" viewBox="0 0 24 24">
-            <circle cx="12" cy="5" r="3"></circle>
-            <circle cx="5" cy="19" r="3"></circle>
-            <circle cx="19" cy="19" r="3"></circle>
-            <line x1="12" y1="8" x2="7" y2="16"></line>
-            <line x1="12" y1="8" x2="17" y2="16"></line>
-        </svg>
-    </div> 
-    <div class="course-info">
-        <span class="status-badge">Coming Soon</span>
-        <h2>Data Structures in Python</h2>
-    </div>
-</a> -->
-
-                <a href="./probability-course" class="course-card">
-            <div class="course-icon">
-                <svg class="icon-svg" width="40" height="40" viewBox="0 0 24 24">
-                    <line x1="18" y1="20" x2="18" y2="10"></line>
-                    <line x1="12" y1="20" x2="12" y2="4"></line>
-                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                <!-- Reliability / risk gauge -->
+                <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M3.5 17a8.5 8.5 0 0 1 17 0" />
+                    <path d="M12 17l5-6M5 21h14" />
+                    <circle cx="12" cy="17" r="1.3" />
                 </svg>
             </div>
-            <div class="course-info">
-                <span class="status-badge">In Development</span>
-                <h2>Probability, Uncertainty and Inference</h2>
-                <!-- <p> </p> -->
-            </div>
-        </a>
+            <h2 class="course-name">Risk and Reliability</h2>
+            <span class="course-status">Coming soon</span>
+        </div>
 
-<a href="./ala" class="course-card coming-soon disabled">
-    <div class="course-icon"> <!-- Added this wrapper -->
-        <svg class="icon-svg" width="40" height="40" viewBox="0 0 24 24">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-            <line x1="3" y1="9" x2="21" y2="9"></line>
-            <line x1="3" y1="15" x2="21" y2="15"></line>
-            <line x1="9" y1="3" x2="9" y2="21"></line>
-            <line x1="15" y1="3" x2="15" y2="21"></line>
-        </svg>
-    </div> <!-- Added this closing tag -->
-    <div class="course-info">
-        <span class="status-badge">Coming Soon</span>
-        <h2>Applied Linear Algebra</h2>
-        <p> </p>
-    </div>
-</a>
-
-
-                        <a href="./ds-course" class="course-card">
+        <div class="course-card">
             <div class="course-icon">
-                <svg class="icon-svg" width="40" height="40" viewBox="0 0 24 24">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    <line x1="8" y1="11" x2="14" y2="11"></line>
-                    </svg>
-                </div>
-            <div class="course-info">
-                <span class="status-badge">In Development</span>
-                <h2>Computing and Data Literacy</h2>
-                <!-- <p> </p> -->
-            </div>
-        </a>
-
-<!--                 <a href="./cybersecurity" class="course-card coming-soon disabled">
-            <div class="course-icon">
-                <svg class="icon-svg" width="40" height="40" viewBox="0 0 24 24">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <!-- Security shield with analytical bars -->
+                <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M12 2 20 5v6c0 5-3.5 8-8 11-4.5-3-8-6-8-11V5z" />
+                    <path d="M8 16v-3M12 16V9M16 16v-5" />
                 </svg>
             </div>
-            <div class="course-info">
-                <span class="status-badge">Coming Soon</span>
-                <h2>Data Analysis in Cybersecurity</h2>
-                <p> </p>
-            </div>
-        </a> -->
-        
-              <a href="./risk" class="course-card coming-soon disabled">
-            <div class="course-icon">
-                <svg class="icon-svg" width="40" height="40" viewBox="0 0 24 24">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                </svg>
-            </div>
-            <div class="course-info">
-                <span class="status-badge">Coming Soon</span>
-                <h2>Risk and Reliability</h2>
-                <p> </p>
-            </div>
- 
-
-
-
+            <h2 class="course-name">Data Analysis in Cybersecurity</h2>
+            <span class="course-status">Coming soon</span>
+        </div>
     </main>
 
-    <footer>
-        &copy; 2026 Christopher Burger. All rights reserved.
-    </footer>
-
+    <footer>&copy; 2026 Christopher Burger. All rights reserved.</footer>
 </body>
 </html>

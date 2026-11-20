@@ -3,205 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Course resources, research, code, and professional links for Christopher Burger.">
     <title>Christopher Burger</title>
     <style>
+        /* Shared visual system with the Course Resources page. */
         :root {
+            color-scheme: light dark;
             --bg: #ffffff;
-            --text: #222222;
-            --link: #0076d1;
-            --card-bg: #f4f4f4;
-            --icon-size: 60px;
+            --text: #202b38;
+            --muted: #596878;
+            --accent: #1466b1;
+            --card-bg: #f7f9fb;
+            --border: #dce3ea;
+            --hover-border: #79aee0;
         }
 
         @media (prefers-color-scheme: dark) {
             :root {
-                --bg: #1a1a1a;
-                --text: #eeeeee;
-                --link: #4da3ff;
-                --card-bg: #2d2d2d;
+                --bg: #171b20;
+                --text: #edf1f5;
+                --muted: #aab5c1;
+                --accent: #83bbf2;
+                --card-bg: #242b33;
+                --border: #3b4551;
+                --hover-border: #83bbf2;
             }
         }
 
+        * { box-sizing: border-box; }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 650px; /* Slightly wider to accommodate images */
-            margin: 40px auto;
-            padding: 0 20px;
+            line-height: 1.5;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 36px 24px 48px;
             background: var(--bg);
             color: var(--text);
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 3.5rem;
+        header { margin-bottom: 2rem; }
+        h1 {
+            margin: 0 0 0.35rem;
+            font-size: clamp(1.7rem, 3vw, 2rem);
+            line-height: 1.2;
         }
 
-        h1 { margin-bottom: 0.5rem; font-size: 2.2rem; }
-        .subtitle { 
-            opacity: 0.8; 
-            font-size: 0.95rem; 
-            max-width: 500px; 
-            margin: 0 auto; 
+        .subtitle {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--muted);
         }
 
-        .links-container {
+        .contact {
+            margin: 0.85rem 0 0;
+            max-width: 760px;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .contact a {
+            color: var(--accent);
+            text-underline-offset: 2px;
+        }
+
+        /* Two columns suit four descriptive cards. The course page uses
+           four columns because its eight cards contain only titles. */
+        .links-grid {
             display: grid;
-            gap: 1.25rem;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
         }
 
         .link-card {
-            background: var(--card-bg);
-            padding: 1.25rem;
-            border-radius: 12px;
-            text-decoration: none;
-            color: inherit;
-            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-            border: 1px solid transparent;
             display: flex;
-            align-items: center;
-            gap: 1.5rem;
+            flex-direction: column;
+            gap: 0.85rem;
+            min-width: 0;
+            min-height: 180px;
+            padding: 1.2rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--card-bg);
+            color: var(--text);
+            text-decoration: none;
+            transition: border-color 140ms ease, background-color 140ms ease;
         }
 
-        .link-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-            border-color: var(--link);
+        .link-card:hover { border-color: var(--hover-border); }
+        .link-card:hover .card-title {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .link-card:focus-visible, .contact a:focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 3px;
         }
 
         .card-icon {
-            width: var(--icon-size);
-            height: var(--icon-size);
+            display: block;
+            width: 42px;
+            height: 42px;
             flex-shrink: 0;
-            object-fit: contain;
-            border-radius: 6px;
-        }
-
-        /* Styling for the embedded GitHub SVG */
-        .github-svg {
-            fill: var(--text);
+            color: var(--accent);
         }
 
         .icon-svg {
-    stroke: var(--text);
-}
-
-        .card-text {
-            flex-grow: 1;
+            display: block;
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.7;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
-        .link-card h2 {
-            margin: 0 0 0.25rem 0;
-            color: var(--link);
-            font-size: 1.2rem;
+        .github-svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+            fill: currentColor;
         }
 
-        .link-card p { 
-            margin: 0; 
-            font-size: 0.9rem; 
-            opacity: 0.8; 
-            line-height: 1.4;
+        .brand-image {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .card-title {
+            margin: 0 0 0.35rem;
+            font-size: 1.075rem;
+            font-weight: 650;
+            line-height: 1.3;
+            text-wrap: pretty;
+        }
+
+        .card-description {
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--muted);
         }
 
         footer {
-            margin-top: 5rem;
-            text-align: center;
+            margin-top: 3.5rem;
+            color: var(--muted);
             font-size: 0.8rem;
-            opacity: 0.5;
+            text-align: center;
         }
 
+        @media (max-width: 540px) {
+            body { padding: 24px 16px 36px; }
+            .links-grid { grid-template-columns: 1fr; }
+            .link-card { min-height: 0; }
+        }
 
-        /* Initials Icon Styling */
-.initials-icon {
-    width: var(--icon-size);
-    height: var(--icon-size);
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    background-color: var(--link); /* Uses your link color as the circle color */
-    color: #ffffff; /* White text for contrast */
-    
-    border-radius: 50%; /* Makes it a circle. Use 8px for a rounded square. */
-    font-weight: 700;
-    font-size: 1.2rem;
-    letter-spacing: -0.5px;
-    text-transform: uppercase;
-}
-
-/* Optional: Different color for disabled state badges */
-.disabled .initials-icon {
-    background-color: #999;
-}
+        @media (prefers-reduced-motion: reduce) {
+            .link-card { transition: none; }
+        }
     </style>
 </head>
 <body>
-
     <header>
         <h1>Christopher Burger</h1>
-        <p class="subtitle">
-            Academic and professional resources. 
-            <br>
-            <br>
-            Please direct inquiries about university matters to <a href="mailto:cburger@olemiss.edu">cburger@olemiss.edu</a> and for everything else to Pelican Quantitative at <a href="mailto:chris@pelicanqc.com">chris@pelicanqc.com</a>.
+        <p class="subtitle">Academic and professional resources.</p>
+        <p class="contact">
+            For university matters, contact
+            <a href="mailto:cburger@olemiss.edu">cburger@olemiss.edu</a>.
+            For other inquiries, contact Pelican Quantitative at
+            <a href="mailto:chris@pelicanqc.com">chris@pelicanqc.com</a>.
         </p>
     </header>
 
-    <main class="links-container">
-        
-        <!-- Course Content -->
+    <main class="links-grid" aria-label="Resources and profiles">
+        <!-- Course resources -->
         <a href="https://christopherburger.github.io/courses" class="link-card">
-            <div class="card-icon" style="display: flex; align-items: center; justify-content: center;">
-    <svg class="icon-svg" height="40" viewBox="0 0 24 24" width="40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-    </svg>
-</div>
-            <div class="card-text">
-                <h2>Course Content</h2>
-                <p>Lecture notes and other resources for current and past semesters.</p>
-            </div>
-        </a>
-
-
-
-        <!-- Github Page -->
-        <a href="https://github.com/christopherburger" class="link-card">
-            <div class="card-icon" style="display: flex; align-items: center; justify-content: center;">
-                <svg class="github-svg" height="48" viewBox="0 0 16 16" width="48" aria-hidden="true">
-                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+            <div class="card-icon">
+                <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M2.5 4h6.2a3.3 3.3 0 0 1 3.3 3.3V21a3.4 3.4 0 0 0-3.3-3H2.5z" />
+                    <path d="M21.5 4h-6.2A3.3 3.3 0 0 0 12 7.3V21a3.4 3.4 0 0 1 3.3-3h6.2z" />
                 </svg>
             </div>
-            <div class="card-text">
-                <h2>GitHub</h2>
-                <p>Research projects, code repositories, and open-source contributions.</p>
+            <div>
+                <h2 class="card-title">Course Content</h2>
+                <p class="card-description">Lecture notes, exercises, and resources for courses I teach or am developing.</p>
             </div>
         </a>
 
-        <!-- Pelican Quantitative -->
+        <!-- GitHub -->
+        <a href="https://github.com/christopherburger" class="link-card">
+            <div class="card-icon">
+                <svg class="github-svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                </svg>
+            </div>
+            <div>
+                <h2 class="card-title">GitHub</h2>
+                <p class="card-description">Research projects, code repositories, and open-source contributions.</p>
+            </div>
+        </a>
+
+        <!-- Pelican Quantitative: preserve the existing local brand image. -->
         <a href="https://pelicanqc.com" class="link-card">
-            <img src="pelican-icon.png" alt="" class="card-icon">
-            <div class="card-text">
-                <h2>Pelican Quantitative</h2>
-                <p>Consulting and quantitative analysis services.</p>
+            <div class="card-icon">
+                <img class="brand-image" src="pelican-icon.png" alt="" width="42" height="42">
+            </div>
+            <div>
+                <h2 class="card-title">Pelican Quantitative</h2>
+                <p class="card-description">Consulting and quantitative analysis services.</p>
             </div>
         </a>
 
-                <!-- Faculty Profile -->
+        <!-- University of Mississippi faculty profile -->
         <a href="https://sites.olemiss.edu/cburger" class="link-card">
-            <div class="initials-icon">UM</div>
-            <div class="card-text">
-                <h2>Faculty Profile</h2>
-                <p>University of Mississippi academic bio, research publications, and contact info.</p>
+            <div class="card-icon">
+                <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="m2.5 9.5 9.5-6 9.5 6" />
+                    <path d="M4 10h16M4 20h16M2.5 22h19" />
+                    <path d="M6 11.5v7M10 11.5v7M14 11.5v7M18 11.5v7" />
+                </svg>
+            </div>
+            <div>
+                <h2 class="card-title">Faculty Profile</h2>
+                <p class="card-description">University of Mississippi biography, research publications, and contact information.</p>
             </div>
         </a>
-
     </main>
 
-    <footer>
-        &copy; 2026 Christopher Burger. All rights reserved.
-    </footer>
+<footer>
+    &copy; <span id="year">2026</span> Christopher Burger. All rights reserved.
+</footer>
+
+<script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
